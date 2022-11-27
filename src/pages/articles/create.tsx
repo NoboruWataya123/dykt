@@ -30,6 +30,9 @@ const Category: NextPage = () => {
             TextAlign.configure({ types: ['heading', 'paragraph'] }),
         ],
         content: newPostContent,
+        onUpdate: ({ editor }) => {
+            setNewPostContent(editor.getHTML())
+        }
     });
 
     useEffect(() => {
@@ -48,7 +51,7 @@ const Category: NextPage = () => {
                         className="flex flex-col items-center justify-center w-full h-screen"
                         onSubmit={async (e) => {
                             e.preventDefault();
-                            await createPost.mutateAsync({ title: newPost, categoryId: "clayw21xy0002ijgdrr74rki6", content: newPostContent }).catch((err) => console.log(err));
+                            await createPost.mutateAsync({ title: newPost, categoryId: "clayw21xy0002ijgdrr74rki6", content: newPostContent });
                             if (createPost.isError) {
                                 alert("Error creating post");
                             }
