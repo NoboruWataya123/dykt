@@ -229,12 +229,18 @@ export function HeaderMegaMenu() {
                     </Group>
 
                     <Group className={classes.hiddenMobile}>
-                        <Link href="/articles/create">
-                            <ActionIcon size={40} variant="default" radius="md">
-                                <IconPlus size={22} color={theme.fn.primaryColor()} />
-                            </ActionIcon>
-                            {/* <Button variant='default'>Create post</Button> */}
-                        </Link>
+                        {
+                            sessionData ? (
+                                <Link href="/articles/create">
+                                    <ActionIcon size={40} variant="default" radius="md">
+                                        <IconPlus size={22} color={theme.fn.primaryColor()} />
+                                    </ActionIcon>
+                                    {/* <Button variant='default'>Create post</Button> */}
+                                </Link>
+                            ) : (
+                                <p></p>
+                            )
+                        }
                         <Button variant="default" onClick={sessionData ? () => signOut() : () => signIn()}>{
                             sessionData ? "Sign out" : "Sign in"}
                         </Button>
@@ -278,13 +284,19 @@ export function HeaderMegaMenu() {
                     <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
                     <Group position="center" grow pb="xl" px="md">
-                        {/* create post button with href articles/create */}
-                        <Link href="/articles/create">
-                            <ActionIcon size={40} variant="default" radius="md">
-                                <IconPlus size={22} color={theme.fn.primaryColor()} />
-                            </ActionIcon>
-                            {/* <Button variant='default'>Create post</Button> */}
-                        </Link>
+                        {/* dont show if not logged in */}
+                        {
+                            sessionData ? (
+                                <Link href="/articles/create">
+                                    <ActionIcon size={40} variant="default" radius="md">
+                                        <IconPlus size={22} color={theme.fn.primaryColor()} />
+                                    </ActionIcon>
+                                    {/* <Button variant='default'>Create post</Button> */}
+                                </Link>
+                            ) : (
+                                <p></p>
+                            )
+                        }
                         <Button variant="default" onClick={sessionData ? () => signOut() : () => signIn()}>{
                             sessionData ? "Sign out" : "Sign in"}
                         </Button>
