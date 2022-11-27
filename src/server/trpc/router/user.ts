@@ -15,12 +15,12 @@ export const userRouter = router({
                     'posts': true,
                     'comments': true,
                     'follow': true,
-                    'Like': true,
-                    'Bookmark': true,
-                    'Notification': true,
-                    'Message': true,
-                    'Conversation': true,
-                    'Report': true,
+                    'likes': true,
+                    'bookmarks': true,
+                    'notifications': true,
+                    'messages': true,
+                    'conversation': true,
+                    'reports': true,
                 }
             });
         }
