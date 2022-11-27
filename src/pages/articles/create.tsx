@@ -1,4 +1,4 @@
-import { Container } from "@mantine/core";
+import { Button, Container } from "@mantine/core";
 import { type NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -12,10 +12,6 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
-
-const content =
-    '<h2 style="text-align: center;">Welcome to Mantine rich text editor</h2><p><code>RichTextEditor</code> component focuses on usability and is designed to be as simple as possible to bring a familiar editing experience to regular users. <code>RichTextEditor</code> is based on <a href="https://tiptap.dev/" rel="noopener noreferrer" target="_blank">Tiptap.dev</a> and supports all of its features:</p><ul><li>General text formatting: <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <s>strike-through</s> </li><li>Headings (h1-h6)</li><li>Sub and super scripts (<sup>&lt;sup /&gt;</sup> and <sub>&lt;sub /&gt;</sub> tags)</li><li>Ordered and bullet lists</li><li>Text align&nbsp;</li><li>And all <a href="https://tiptap.dev/extensions" target="_blank" rel="noopener noreferrer">other extensions</a></li></ul>';
-
 
 const Category: NextPage = () => {
     const router = useRouter()
@@ -33,7 +29,6 @@ const Category: NextPage = () => {
             Highlight,
             TextAlign.configure({ types: ['heading', 'paragraph'] }),
         ],
-        content,
     });
 
     useEffect(() => {
@@ -52,7 +47,7 @@ const Category: NextPage = () => {
                         className="flex flex-col items-center justify-center w-full h-screen"
                         onSubmit={async (e) => {
                             e.preventDefault();
-                            await createPost.mutateAsync({ categoryId: "claoupcqz0000ij1d38i4jcb0", title: newPost, content: newPostContent }).catch((err) => console.log(err));
+                            await createPost.mutateAsync({ title: newPost, categoryId: "clayw21xy0002ijgdrr74rki6", content: newPostContent }).catch((err) => console.log(err));
                             if (createPost.isError) {
                                 alert("Error creating post");
                             }
@@ -66,12 +61,6 @@ const Category: NextPage = () => {
                             className="bg-white rounded-md p-2 mt-4"
                         />
                         <br />
-                        {/* <textarea
-                            value={newPostContent}
-                            onChange={(e) => setNewPostContent(e.target.value)}
-                            placeholder="Post content"
-                            className="bg-white rounded-md p-2 mt-4"
-                        /> */}
                         <RichTextEditor editor={editor}>
                             <RichTextEditor.Toolbar sticky stickyOffset={60}>
                                 <RichTextEditor.ControlsGroup>
@@ -115,7 +104,9 @@ const Category: NextPage = () => {
 
                             <RichTextEditor.Content />
                         </RichTextEditor>
-                        <button type="submit" className="bg-white rounded-md p-2 mt-4">Create</button>
+                        <Button type="submit" color="blue" variant="outline" className="mt-4">
+                            Create Post
+                        </Button>
                     </form>
                 </main>
             </Container>
