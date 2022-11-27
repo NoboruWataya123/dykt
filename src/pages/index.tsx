@@ -1,15 +1,9 @@
 import { type NextPage } from "next";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 
-import { trpc } from "../utils/trpc";
-import { HeaderMegaMenu } from "../components/Header/Header";
 import { ArticlesCardsGrid } from "../components/Grid/Grid";
 import { FooterSimple } from "../components/Footer/Footer";
 
 const Page: NextPage = () => {
-    const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
-
     return (
         <>
             <ArticlesCardsGrid />
