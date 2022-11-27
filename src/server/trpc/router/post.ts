@@ -10,7 +10,7 @@ export const postRouter = router({
             const skip = (page - 1) * take;
             return ctx.prisma.post.findMany({
                 where: {
-                    published: true,
+                    // published: true,
                     categoryId: categoryId ? categoryId : undefined
                 },
                 skip,
