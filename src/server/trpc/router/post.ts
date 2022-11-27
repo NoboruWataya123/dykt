@@ -20,6 +20,7 @@ export const postRouter = router({
                     'category': true,
                     'author': true,
                     'tags': true,
+                    'images': true,
                 }
             });
         }),
@@ -30,6 +31,12 @@ export const postRouter = router({
                 where: {
                     id: input.id,
                 },
+                include: {
+                    'category': true,
+                    'author': true,
+                    'tags': true,
+                    'images': true,
+                }
             });
         }
         ),
