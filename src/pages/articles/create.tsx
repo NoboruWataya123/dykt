@@ -29,6 +29,7 @@ const Category: NextPage = () => {
             Highlight,
             TextAlign.configure({ types: ['heading', 'paragraph'] }),
         ],
+        content: newPostContent,
     });
 
     useEffect(() => {
