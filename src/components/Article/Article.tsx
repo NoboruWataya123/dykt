@@ -10,12 +10,9 @@ import {
     Avatar,
     createStyles,
 } from '@mantine/core';
-import { useEffect, useState } from "react";
 
 import Link from 'next/link';
 import { ArticleProps } from './ArticleProps';
-import { RichTextEditor } from '@mantine/tiptap';
-import { EditorContent, useEditor } from '@tiptap/react';
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -54,29 +51,27 @@ const useStyles = createStyles((theme) => ({
 
 export default function ArticleCard(article: ArticleProps | any): JSX.Element {
     const classes = useStyles();
-    const editor = useEditor({
-        content: article.content,
-    });
+    const articleProps = article.article;
 
     return (
         <>
             <Card
-                key={article.id}
+                key={articleProps.id}
                 className={classes.classes.card}
                 shadow="sm"
                 radius="md"
                 style={{ maxWidth: 400 }}
             >
-                <Link href={`/articles/${article.id}`}>
+                <Link href={`/articles/${articleProps.id}`}>
                     <Image
-                        src={article.images[0].url}
-                        alt={article.title}
+                        src={articleProps.images[0].url || ''}
+                        alt={articleProps.title}
                         height={200}
                         radius="md"
                         style={{ objectFit: 'cover' }}
                     />
                     <Text className={classes.classes.title} size="xl" weight={500}>
-                        {article.title}
+                        {articleProps.title}
                     </Text>
                 </Link>
 
