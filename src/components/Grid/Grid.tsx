@@ -10,7 +10,7 @@ export function ArticlesCardsGrid() {
         <Container size="xl" py="xl" >
             <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }, { maxWidth: 'md', cols: 2 }]}>
                 {posts.data?.map((article) => (
-                    <ArticleCard article={article} />
+                    <ArticleCard key={article.id} article={article} />
                 ))}
             </SimpleGrid>
         </Container>
